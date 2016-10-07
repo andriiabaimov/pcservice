@@ -1,6 +1,11 @@
 from django.contrib import admin
 
-from .models import Repair
+from .models import Partner, Repair
+
+
+@admin.register(Partner)
+class PartnerAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(Repair)
