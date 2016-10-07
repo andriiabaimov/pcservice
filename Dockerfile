@@ -14,7 +14,6 @@ WORKDIR /usr/src/app
 COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY src .
-RUN python manage.py collectstatic --no-input
 
 EXPOSE 80
 CMD ["supervisord", "-n"]
