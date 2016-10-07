@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Post{% endblock title %}
+
+{% block content %}
+  <ul>
+  {% for repair in object_list %}
+    <li>
+      <small><a href='{% url 'actions:detail' repair.pk %}'>{{ repair.created }}</a></small>
+      {{ repair.status }}
+    </li>
+  {% endfor %}
+  </ul>
+{% endblock content %}
