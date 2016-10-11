@@ -5,10 +5,11 @@ from model_utils.models import StatusModel, TimeStampedModel
 
 from hardware.models import Spare
 from .behaviors import Addressable, Commentable, Phonable, Pricable
-from .constants import MARKUP_DEFAULT, NAME_MAX_LENGTH
 
 
 class Partner(Addressable, Phonable, TimeStampedModel):
+    NAME_MAX_LENGTH = 50
+
     name = models.CharField(max_length=NAME_MAX_LENGTH)
 
     def __str__(self):
@@ -20,6 +21,8 @@ class Purchase(TimeStampedModel):
 
 
 class PurchaseItem(Commentable, Pricable, TimeStampedModel):
+    MARKUP_DEFAULT = 20
+
     spare = models.ForeignKey(Spare, related_name='purchases')
     amount = models.IntegerField()
     markup = models.IntegerField(default=MARKUP_DEFAULT)

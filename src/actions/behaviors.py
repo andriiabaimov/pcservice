@@ -3,14 +3,14 @@
 from django.core.validators import RegexValidator
 from django.db import models
 
-from .constants import ADDRESS_MAX_LENGTH, COMMENT_MAX_LENGTH, PRICE_MAX_DIGITS
-
 
 class Addressable(object):
+    ADDRESS_MAX_LENGTH = 250
     address = models.CharField(max_length=ADDRESS_MAX_LENGTH)
 
 
 class Commentable(object):
+    COMMENT_MAX_LENGTH = 100
     comment = models.CharField(max_length=COMMENT_MAX_LENGTH)
 
 
@@ -20,4 +20,5 @@ class Phonable(object):
 
 
 class Pricable(object):
+    PRICE_MAX_DIGITS = 7
     price = models.DecimalField(decimal_places=2, max_digits=PRICE_MAX_DIGITS)
