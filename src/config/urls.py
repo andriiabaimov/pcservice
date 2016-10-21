@@ -19,6 +19,7 @@ from django.contrib.auth.views import login, logout
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
+    url(r'^search/', include('haystack.urls')),
     url(r'^actions/', include('actions.urls', namespace='actions')),
     url(r'^login/$', login, name='login'),
     url(r'^logout/$', logout),

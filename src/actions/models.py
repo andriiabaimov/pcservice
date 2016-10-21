@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from model_utils import Choices
 from model_utils.managers import QueryManager
 from model_utils.models import StatusModel, TimeStampedModel
@@ -14,6 +15,9 @@ class Partner(Addressable, Phonable, TimeStampedModel):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('actions:partner_detail', args=[str(self.id)])
 
 
 class Purchase(TimeStampedModel):

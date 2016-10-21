@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404, render
 from django.utils import timezone
 from django.views.generic import DeleteView, DetailView, ListView, UpdateView
 
-from .models import Repair
+from .models import Partner, Repair
 from .utils import check_user
 
 
@@ -29,6 +29,10 @@ def posting_repair_status(request, pk, status):
             return HttpResponse('Hooray')
     except DatabaseError:
         return HttpResponse('Sadness', status_code=400)
+
+
+class PartnerDetailView(DetailView):
+    model = Partner
 
 
 class RepairListView(ListView):

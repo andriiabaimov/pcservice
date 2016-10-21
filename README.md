@@ -1,16 +1,25 @@
 # PC Service
-A Django app for service centers served with nginx and uWSGI
+A Django app for service centers using Elasticsearch served with nginx and uWSGI
 
 
 ## Quick start
 
-If you have no PostgreSQL running, the easiest way for you will be:
-> docker run --name pcservice_db -p 5432:5432 -d postgres
+If you have no idea how and where to deploy the app, the easiest way for you is:
+> docker run --name pcservice -p 80:80 -d andriiabaimov/pcservice
 
-If you have no idea how and where to deploy the app, the easiest way for you will be:
-> docker run --link pcservice_db --name pcservice -p 80:80 -d andriiabaimov/pcservice
+If you have no PostgreSQL running, the easiest way for you is:
+> docker run --name pcservice_db -d postgres
 
-After both app and PostgreSQL are ready, run the migrations:
+If you have no Elasticsearch running, the easiest way for you is:
+> docker run --name pcservice_es -d elasticsearch
+
+Connect all of them in one network:
+> docker network create pcervice_nw
+> docker network connect pcervice_nw pcservice
+> docker network connect pcervice_nw pcservice_db
+> docker network connect pcervice_nw pcservice_es
+
+Run migrations:
 > docker exec -i pcservice python manage.py migrate
 
 Collect static files (this stage also generates unique secret key for Django):
