@@ -62,8 +62,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'model_utils',
-    'actions',
-    'hardware',
+    'actions.apps.ActionsConfig',
+    'hardware.apps.HardwareConfig',
 ]
 
 MIDDLEWARE = [
