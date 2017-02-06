@@ -3,8 +3,8 @@ from django.conf.urls import url
 from .views import *
 
 urlpatterns = [
-    url(r'^$', RepairListView.as_view(), name='list'),
-    url(r'^(?P<pk>\d+)/$', RepairDetailView.as_view(), name='detail'),
-    url(r'^(?P<pk>\d+)/delete/$', RepairDeleteView.as_view(), name='delete'),
-    url(r'^(?P<pk>\d+)/update/$', RepairUpdateView.as_view(), name='update'),
+    url(r'^repairs/$', RepairListView.as_view(), name='repairs_list'),
+    url(r'^repairs/(?P<pk>\d+)/$', RepairDetailView.as_view(), name='repair'),
+    url(r'^repairs/(?P<pk>\d+)/delete/$', RepairDeleteView.as_view(), name='delete_repair'),
+    url(r'^repairs/(?P<pk>\d+)/update/$', RepairUpdateView.as_view(), name='update_repair'),
 ]

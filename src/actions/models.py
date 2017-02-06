@@ -1,3 +1,4 @@
+from django.core.urlresolvers import reverse
 from django.db import models
 from model_utils import Choices
 from model_utils.managers import QueryManager
@@ -44,3 +45,6 @@ class Repair(StatusModel, TimeStampedModel):
         repair = cls(status=status)
         repair.save()
         return repair
+
+    def get_absolute_url(self):
+        return reverse('actions:repair', kwargs={'pk': self.pk})
