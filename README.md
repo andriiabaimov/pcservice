@@ -1,3 +1,12 @@
+No further development is planned. Nevertheless, here are some ideas:
+* Unit tests
+* Logging
+* Coverage.py support
+* Separate Docker volume for data
+* Sphinx docs generator
+* Swagger-based API description
+* Travis CI
+
 # PC Service
 A Django app for service centers served with nginx and uWSGI
 
